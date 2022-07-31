@@ -33,7 +33,7 @@
           <% end %>
 
           <td>
-            <p>コメント件数：<%= @book.book_comments.count %></p>
+            <p>コメント数：<%= @book.book_comments.count %></p>
           </td>
 
           <% if @book.user == current_user %>
@@ -43,7 +43,7 @@
         </tr>
       </table>
 
-      <table>
+      <table class='table'>
         <tr>
           <% @book.book_comments.each do |book_comment| %>
           <td>
