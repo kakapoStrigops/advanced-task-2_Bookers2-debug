@@ -29,20 +29,9 @@
       </table>
 
       <%= render "book_comments/index", book: @book %>
-
-
-
-      <%= form_with model: [@book, @book_comment] do |f| %>
-      <div class="form-group">
-        <%= f.text_area :comment, rows: '5', class: 'form-control book_comment' %>
-      </div>
-      <div class="form-group">
-        <%= f.submit "送信" %>
-      </div>
-      <% end %>
+      <%= render "book_comments/form", book: @book, book_comment: @book_comment %>
 
       </div>
-
     </div>
   </div>
 </div>
