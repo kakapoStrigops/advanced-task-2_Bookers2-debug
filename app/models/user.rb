@@ -9,15 +9,15 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
 
-  # フォローする関係(フォロワーになります！という人、フォロー行為の能動者、フォロワー)
+  # フォローする関係(フォロワーになります！という人、フォロー行為の能動者、フォロワー)のUserから見て、フォロー対象者のUserを（中間テーブルを介して）集める。
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  # フォローをした関係（フォロー対象相手、フォロー行為の受動者、フォロワーがフォローしましたよの相手）
+  # フォローをした相手（フォロー対象相手、フォロー行為の受動者、フォロワーがフォローしましたよの相手）のUserから見て、フォローしてくる側のUserを（中間テーブルを介して）集める。
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
 
   #一覧画面で使う
-  # フォローイング（フォロー対象相手）
+  # 中間テーブルを介して、「followed」モデルのUser（フォローされた側）を集めることを「following」と定義。
   has_many :followings, through: :relationships, source: :followed
-  # フォロワー（フォローしてくれている人）
+  # 中間テーブルを介して、「follower」モデルのUser（フォローする側）を集めることを「followers」と定義。
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
