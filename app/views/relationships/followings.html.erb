@@ -1,0 +1,27 @@
+<h1>Follow Users</h1>
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |other_user| %>
+    <tr>
+      <td><%= image_tag other_user.get_profile_image, size: '50x50' %></td>
+      <td><%= other_user.name %></td>
+      <td>フォロー数: <%= other_user.followings.count %></td>
+      <td>フォロワー数: <%= other_user.followers.count %></td>
+      <td><%= link_to 'Show', other_user %></td>
+
+    </tr>
+    <% end %>
+  </tbody>
+</table>
