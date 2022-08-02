@@ -17,7 +17,7 @@ class User < ApplicationRecord
   #一覧画面で使う
   # フォローイング（フォロー対象相手）
   has_many :followings, through: :relationships, source: :followed
-  # フォロワー（フォローしてくれいている人）
+  # フォロワー（フォローしてくれている人）
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
@@ -38,9 +38,9 @@ class User < ApplicationRecord
     relationships.find_by(followed_id: other_user_id).destroy
   end
 
-  # フォローしているか判定
-  def following?(user)
-    followings.include?(user)
+  # 相手をフォローしているか判定
+  def following?(other_user)
+    followings.include?(other_user)
   end
 
 end
