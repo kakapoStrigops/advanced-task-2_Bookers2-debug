@@ -13,7 +13,7 @@ class RelationshipsController < ApplicationController
   # フォロー一覧
   def followings
     user = User.find(params[:user_id])
-    @users = user.followings
+    @other_users = user.followings
   end
 
   # フォロワー一覧
