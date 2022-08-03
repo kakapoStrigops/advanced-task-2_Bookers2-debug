@@ -20,5 +20,6 @@ class Book < ApplicationRecord
     elsif search == "partial_match"
       @book = Book.where("title LIKE?", "%#{word}%")
     end
+  end
 
 end
