@@ -1,8 +1,17 @@
-<% if user_signed_in? %>
-  <%= form_with url: search_path do |f| %>
-    <%= f.text_field :word %>
-    <%= f.select :range, ['User','Book'] %>
-    <%= f.select :search, [["完全一致","perfect_match"],["前方一致","forward_match"],["後方一致","backward_match"],["部分一致","partial_match"]] %>
-    <%= f.submit "検索" %>
-  <% end %>
-<% end %>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'></div>
+    <div class='col-md-8 offset-md-1'>
+      <% if user_signed_in? %>
+        <div class='search_form'>
+        <%= form_with url: search_path do |f| %>
+          <%= f.text_field :word %>
+          <%= f.select :range, ['User','Book'] %>
+          <%= f.select :search, [["完全一致","perfect_match"],["前方一致","forward_match"],["後方一致","backward_match"],["部分一致","partial_match"]] %>
+          <%= f.submit "検索" %>
+        <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
