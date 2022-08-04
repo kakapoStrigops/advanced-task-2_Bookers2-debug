@@ -10,17 +10,17 @@ class Book < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @books = Book.where("title LIKE?", "#{word}")
-    elsif search == "forward_match"
-      @books = Book.where("title LIKE?", "#{word}%")
-    elsif search == "backward_match"
-      @books = Book.where("title LIKE?", "%#{word}")
-    elsif search == "partial_match"
-      @books = Book.where("title LIKE?", "%#{word}%")
+  def self.search_for(content, method)
+    if method == "perfect"
+      Book.where("title LIKE?", "#{content}")
+    elsif method == "forward"
+      Book.where("title LIKE?", "#{content}%")
+    elsif method == "backward"
+      Book.where("title LIKE?", "%#{content}")
+    elsif method == "partial"
+      Book.where("title LIKE?", "%#{content}%")
     else
-      @books = Book.all
+      Book.all
     end
   end
 
