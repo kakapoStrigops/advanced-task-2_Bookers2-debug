@@ -4,26 +4,24 @@ class RelationshipsController < ApplicationController
     current_user.follow(params[:user_id])
     @user = User.find(params[:user_id])
     # redirect_to request.referer
-    render 'replace_btn'
   end
 
   def destroy
     current_user.unfollow(params[:user_id])
     @user = User.find(params[:user_id])
     # redirect_to request.referer
-    render 'replace_btn'
   end
 
   # フォロー一覧
   def followings
-    user = User.find(params[:user_id])
-    @other_users = user.followings
+    @user = User.find(params[:user_id])
+    @other_users = @user.followings
   end
 
   # フォロワー一覧
   def followers
-    user = User.find(params[:user_id])
-    @other_users = user.followers
+    @user = User.find(params[:user_id])
+    @other_users = @user.followers
   end
 
 end
