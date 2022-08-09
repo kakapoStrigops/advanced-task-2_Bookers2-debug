@@ -3,6 +3,6 @@ $(".followings-count-" + <%= current_user.id.to_s %>).html("<%= j(render 'relati
 $(".followers-count-" + <%= @user.id.to_s %>).html("<%= j(render 'relationships/followers-counter', user: @user) %>");
 $(".relationship-btn-" + <%= @user.id.to_s %>).html("<%= j(render 'relationships/follow-btn', user: @user) %>");
 <!-- UserInfo箇所-->
-$(".userInfo_followings-count").html("<%= j(render 'relationships/userInfo_followings-counter', user: current_user) %>");
-$(".userInfo_followers-count").html("<%= j(render 'relationships/userInfo_followers-counter', user: current_user) %>");
+$(".userInfo_followings-count").html("<%= j(render 'relationships/userInfo_followings-counter', user: @user) %>");
+$(".userInfo_followers-count").html("<%= j(render 'relationships/userInfo_followers-counter', user: @user) %>");
 $(".userInfo_relationship-btn").html("<%= j(render 'relationships/userInfo_follow-btn', user: @user) %>");
