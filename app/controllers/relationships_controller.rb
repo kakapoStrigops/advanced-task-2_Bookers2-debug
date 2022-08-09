@@ -1,15 +1,15 @@
 class RelationshipsController < ApplicationController
 
   def create
-    current_user.follow(params[:user_id])
     @user = User.find(params[:user_id])
+    current_user.follow(@user.id)
     # redirect_to request.referer
     render 'replace_relationships'
   end
 
   def destroy
-    current_user.unfollow(params[:user_id])
     @user = User.find(params[:user_id])
+    current_user.unfollow(@user.id)
     # redirect_to request.referer
     render 'replace_relationships'
   end
