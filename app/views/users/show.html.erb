@@ -9,6 +9,8 @@
     <div class='col-md-8 offset-md-1'>
       <h2>Books</h2>
       <%= render 'books/index',books: @books %>
+      <h2>投稿数の前日比・前週比</h2>
+      今日の投稿数：<%= @user.books.where('created_at > ?', Date.today).count %>
     </div>
   </div>
 </div>
