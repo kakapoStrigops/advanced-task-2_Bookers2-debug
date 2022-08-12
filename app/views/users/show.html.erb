@@ -10,7 +10,8 @@
       <h2>Books</h2>
       <%= render 'books/index',books: @books %>
       <h2>投稿数の前日比・前週比</h2>
-      今日の投稿数：<%= @user.books.where('created_at > ?', Date.today).count %>
+      今日の投稿数：<%= @user.books.where(created_at: Date.today.all_day).count %>
+      前日の投稿数：<%= @user.books.where(created_at: 1.day.ago.all_day).count %>
     </div>
   </div>
 </div>
