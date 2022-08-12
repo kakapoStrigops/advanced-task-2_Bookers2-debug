@@ -7,7 +7,6 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   has_one_attached :profile_image
   has_many :favorites, dependent: :destroy
-  has_many :favoring_books, through: :favorites, source: :book
   has_many :book_comments, dependent: :destroy
 
   # フォローする関係(フォロワーになります！という人、フォロー行為の能動者、フォロワー)のUserから見て、フォロー対象者のUserを（中間テーブルを介して）集める。
