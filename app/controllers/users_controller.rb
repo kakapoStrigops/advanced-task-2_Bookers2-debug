@@ -5,6 +5,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
+    @book_count_today =  @user.books.where(created_at: Date.today.all_day).count
+    @book_count_yesterday = @user.books.where(created_at: 1.day.ago.all_day).count
+    if @book_count_yesterday != 0
+      @the_day_before = @book_count_today / @book_count_yesterday
+    else
+      @the_day_before = "100%"
+    end
   end
 
   def index
