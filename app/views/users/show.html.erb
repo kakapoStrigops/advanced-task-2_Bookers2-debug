@@ -17,9 +17,16 @@
           <th>前日比</th>
         </tr>
         <tr>
-          <td><%= @book_count_today %></td>
-          <td><%= @book_count_yesterday%></td>
-          <td><%=  @the_day_before %></td>
+          <td><%= @today_book.count %></td>
+          <td><%= @yesterday_book.count %></td>
+          <td>
+            <% if @yesterday_book.count == 0 %>
+              前日の投稿が0のため計算できません
+            <% else %>
+              <% @the_day_before = @today_book.count / @yesterday_book.count.to_f %>
+              <%= (@the_day_before * 100).round %>%
+            <% end %>
+          </td>
         </tr>
       </table>
       <table class='table table-bordered'>
@@ -29,9 +36,16 @@
           <th>前週比</th>
         </tr>
         <tr>
-          <td><%= @book_count_thisweek %></td>
-          <td><%= @book_count_lastweek %></td>
-          <td><%= @week_over_week %></td>
+          <td><%= @this_week_book.count %></td>
+          <td><%= @last_week_book.count %></td>
+          <td>
+            <% if @last_week_book.count == 0 %>
+              前週の投稿が0のため計算できません
+            <% else %>
+              <% @the_week_before = @this_week_book.count / @last_week_book.count.to_f %>
+              <%= (@the_week_before * 100).rount %>%
+            <% end %>
+          </td>
         </tr>
       </table>
     </div>
