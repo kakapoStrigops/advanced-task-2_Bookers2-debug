@@ -9,23 +9,6 @@ class UsersController < ApplicationController
     @yesterday_book = @books.created_yesterday
     @this_week_book = @books.created_this_week
     @last_week_book = @books.created_last_week
-
-
-
-    # @book_count_today =  @user.books.where(created_at: Date.today.all_day).count
-    # @book_count_yesterday = @user.books.where(created_at: 1.day.ago.all_day).count
-    # if @book_count_yesterday != 0
-    #   @the_day_before = @book_count_today / @book_count_yesterday
-    # else
-    #   @the_day_before = "-"
-    # end
-    # @book_count_thisweek = @user.books.where(created_at:Date.today.all_week).count
-    # @book_count_lastweek = @user.books.where(created_at: 1.week.ago.all_week).count
-    # if @book_count_lastweek != 0
-    #   @week_over_week = @book_count_thisweek / @book_count_lastweek
-    # else
-    #   @week_over_week = "-"
-    # end
   end
 
   def index
