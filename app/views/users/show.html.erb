@@ -8,32 +8,8 @@
     </div>
     <div class='col-md-8 offset-md-1'>
       <h2>Books</h2>
-      <%= render 'books/index',books: @books %>
-      <h2>投稿数の前日比・前週比</h2>
-      <table class='table table-bordered'>
-        <tr>
-          <th>今日の投稿数</th>
-          <th>前日の投稿数</th>
-          <th>前日比</th>
-        </tr>
-        <tr>
-          <td><%= @book_count_today %></td>
-          <td><%= @book_count_yesterday%></td>
-          <td><%=  @the_day_before %></td>
-        </tr>
-      </table>
-      <table class='table table-bordered'>
-        <tr>
-          <th>今週の投稿数</th>
-          <th>前週の投稿数</th>
-          <th>前週比</th>
-        </tr>
-        <tr>
-          <td><%= @book_count_thisweek %></td>
-          <td><%= @book_count_lastweek %></td>
-          <td><%= @week_over_week %></td>
-        </tr>
-      </table>
+      <%= render 'books/index', books: @books %>
+      <%= render 'book_index', books: @books %>
     </div>
   </div>
 </div>
